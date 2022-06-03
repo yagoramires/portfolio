@@ -29,8 +29,8 @@
 }
 .i-name>:nth-child(3) {
     font-weight: 100;
-    font-size: 14px;
-    color: var(--grey);
+    font-size: 18px;
+    color: var(--gray);
     margin-top: 10px;
 }
 
@@ -82,4 +82,17 @@
     top: -8%;
     left: -24%;
     border-radius: 50%;
+}
+
+.blur {
+    position: absolute;
+    width: 22rem;
+    height: 14rem;
+    border-radius: 50%;
+    background: #edd0ff;
+    filter: blur(72px);
+    z-index: -9;
+    top: -18%;
+    left: 36%;
+
 }

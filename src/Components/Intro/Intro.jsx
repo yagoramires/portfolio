@@ -21,6 +21,7 @@ function Intro() {
           <span>Yago Ramires</span>
           <span>
             Frontend Developer with high level of experience in web designing
+            <br />
             and development, producting the Quality work
           </span>
         </div>
@@ -50,6 +51,18 @@ function Intro() {
         <div style={{ top: '21.3rem', left: '3%' }}>
           <FloatingDiv image={thumbup} txt1='Front-End' txt2='Developer' />
         </div>
+
+        <div className='blur' style={{ background: 'rgb(238 210 255)' }}></div>
+        <div
+          className='blur'
+          style={{
+            background: '#C1F5FF',
+            height: '11rem',
+            width: '21rem',
+            top: '18rem',
+            left: '-9rem',
+          }}
+        />
       </div>
     </div>
   );
