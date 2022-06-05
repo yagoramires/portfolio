@@ -44,3 +44,17 @@
     color: var(--orange);
     font-weight: bold;
 }
+
+@media screen and (max-width: 480px) {
+    .experience {
+        height: 16rem;
+        transform: scale(0.8);
+        gap: 2rem;
+    }
+
+    .achievement {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

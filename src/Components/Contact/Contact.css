@@ -49,3 +49,21 @@ textarea {
     /* font-weight: ; */
     color: var(--black);
 }
+
+@media screen and (max-width: 480px) {
+    .contact-form {
+        height: 45rem;
+        flex-direction: column;
+        padding: 0;
+        gap: 5rem;
+    }
+
+    .c-right span {
+        transform: scale(0.6);
+        text-align: center;
+    }
+
+    .c-right .user {
+        width: 15rem;
+    }
+}

@@ -71,3 +71,30 @@
 .t-wrapper .swiper-pagination-bullet-active {
     background: var(--orange);
 }
+
+@media screen and (max-width: 480px) {
+    .testimonials {
+
+        height: 35rem;
+    }
+
+    .t-wrapper {
+        padding: 0;
+        height: 100%
+    }
+
+    .testimonial {
+        box-shadow: none;
+    }
+
+    .testimonial img {
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+    }
+
+    .swiper-pagination-bullets {
+        top: 18rem;
+    }
+
+}

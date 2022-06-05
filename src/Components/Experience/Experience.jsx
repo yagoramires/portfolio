@@ -1,23 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { themeContext } from '../../Context';
 import './Experience.css';
 
 function Experience() {
+  const theme = useContext(themeContext);
+  const darkMode = theme.state.darkMode;
   return (
-    <div className='experience'>
+    <div className='experience' id='Experience'>
       <div className='achievement'>
-        <div className='circle'>8+</div>
-        <span>months</span>
-        <span>Experience</span>
+        <div
+          className='circle'
+          style={{ color: darkMode ? 'var(--black)' : '' }}
+        >
+          6
+        </div>
+        <span>meses de</span>
+        <span>Experiência</span>
       </div>
       <div className='achievement'>
-        <div className='circle'>10+</div>
-        <span>completed</span>
-        <span>Projects</span>
+        <div
+          className='circle'
+          style={{ color: darkMode ? 'var(--black)' : '' }}
+        >
+          7
+        </div>
+        <span>projetos</span>
+        <span>Completos</span>
       </div>
       <div className='achievement'>
-        <div className='circle'>2+</div>
-        <span>companies</span>
-        <span>Work</span>
+        <div
+          className='circle'
+          style={{ color: darkMode ? 'var(--black)' : '' }}
+        >
+          1
+        </div>
+        <span>contrato</span>
+        <span>Empresarial</span>
       </div>
     </div>
   );

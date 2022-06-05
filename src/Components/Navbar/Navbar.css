@@ -32,13 +32,30 @@
     display: flex;
     gap: 2rem;
     margin-right: 4rem;
+    cursor: pointer;
 }
 
-.n-list>ul >li:hover {
-    cursor: pointer;
+.n-list>ul>li:hover {
     color: var(--orange)
 }
 
 .n-button {
     flex: 2;
+}
+
+
+@media screen and (max-width: 480px) {
+    .n-list {
+        display: none;
+    }
+
+    .n-button {
+        display: none;
+
+    }
+
+    .n-name {
+
+        justify-content: space-around;
+    }
 }

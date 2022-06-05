@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { themeContext } from '../../Context';
 import './Testimonials.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
@@ -33,13 +34,16 @@ function Testimonials() {
     },
   ];
 
+  const theme = useContext(themeContext);
+  const darkMode = theme.state.darkMode;
+
   return (
-    <div className='testimonials'>
+    <div className='testimonials' id='Testimonials'>
       <div className='t-wrapper'>
         <div className='t-heading'>
-          <span>Clients always get</span>
-          <span> Exceptional Work </span>
-          <span>from me...</span>
+          <span>Clientes sempre recebem</span>
+          <span> um trabalho excepcional </span>
+          <span>de mim...</span>
 
           <div
             className='blur t-blur1'
@@ -57,7 +61,9 @@ function Testimonials() {
               <SwiperSlide key={index}>
                 <div className='testimonial'>
                   <img src={client.img} alt='' />
-                  <span>{client.review}</span>
+                  <span style={{ color: darkMode ? 'white' : '' }}>
+                    {client.review}
+                  </span>
                 </div>
               </SwiperSlide>
             );

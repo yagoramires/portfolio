@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
+import { themeContext } from '../../Context';
 import emailjs from '@emailjs/browser';
 import './Contact.css';
 
@@ -27,13 +28,17 @@ function Contact() {
         },
       );
   };
+  const theme = useContext(themeContext);
+  const darkMode = theme.state.darkMode;
 
   return (
     <div className='contact-form'>
       <div className='c-left'>
         <div className='awesome'>
-          <span>Get in Touch</span>
-          <span>Contact Me</span>
+          <span style={{ color: darkMode ? 'white' : '' }}>
+            Solicite um orçamento
+          </span>
+          <span>Me contate..</span>
           <div className='blur c-blur1' style={{ background: '#ABF1FF94' }} />
         </div>
       </div>
@@ -42,24 +47,26 @@ function Contact() {
         <form ref={form} onSubmit={sendEmail}>
           <input
             type='text'
-            placeholder='Name'
+            placeholder='Nome'
             name='user_name'
             className='user'
           />
           <input
             type='text'
-            placeholder='Email'
+            placeholder='E-mail'
             name='user_email'
             className='user'
           />
           <textarea
             type='text'
-            placeholder='Message'
+            placeholder='Mensagem'
             name='message'
             className='user'
           />
-          <input type='submit' value='Send' className='button' />
-          <span className='done'>{done && 'Thanks for contacting me!'}</span>
+          <input type='submit' value='Enviar' className='button' />
+          <span className='done' style={{ color: darkMode ? 'white' : '' }}>
+            {done && 'Obrigado por entrar em contato!'}
+          </span>
           <div
             className='blur c-blur2'
             style={{ background: 'var(--purple)' }}
