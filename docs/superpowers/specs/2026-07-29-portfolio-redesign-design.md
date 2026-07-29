@@ -139,7 +139,7 @@ Cada componente recebe sua fatia de `Content` por props e não conhece nada alé
 
 Dois objetos tipados, `pt.ts` e `en.ts`, ambos declarados como `Content`. O TypeScript falha o build se uma chave faltar na tradução — é a garantia de que os idiomas não desandam.
 
-O toggle é um `<Link>` para a mesma rota no outro idioma, não um botão com estado. Sem `next-intl`, sem provider, sem client component, e os dois idiomas são indexáveis. `metadata` e `<html lang>` mudam por rota; cada página declara `alternates.languages` apontando para a outra.
+O toggle é um `<a href>` para a rota do outro idioma, não um botão com estado — a navegação completa do documento é justamente o que dispara `@view-transition` (um `<Link>` rotearia no cliente e a transição não aconteceria). Sem `next-intl`, sem provider, sem client component, e os dois idiomas são indexáveis. `metadata` e `<html lang>` mudam por rota; cada página declara `alternates.languages` apontando para a outra.
 
 ### Animação
 
@@ -147,7 +147,7 @@ Sem biblioteca de animação. Tudo em CSS nativo:
 
 - **Entrada de seção e varredura do bloco cobalto** — `animation-timeline: view()`, dentro de `@supports (animation-timeline: view())`. Onde o navegador não suporta, o conteúdo já nasce visível: a animação é melhoria, nunca requisito de leitura.
 - **Abertura do herói** — `@keyframes` com `animation-delay` escalonado: eyebrow → nome linha a linha em `clip-path` → lead → métrica. Cerca de 700ms no total.
-- **Rótulos de seção** — `position: sticky` na lateral, sem JS de scroll.
+- **Header** — `position: sticky` no topo, com fundo translúcido, sem JS de scroll.
 - **Cards** — `transition` de `transform` e cor no hover, com o bloco cobalto crescendo por trás.
 - **Troca de idioma** — `@view-transition { navigation: auto; }` em CSS, que cruza as duas rotas sem JS e sem flag experimental do Next. Onde o navegador não suporta, a navegação acontece seca, sem quebrar nada.
 - **`prefers-reduced-motion: reduce`** — um único bloco em `globals.css` zera duração e desliga as timelines.
