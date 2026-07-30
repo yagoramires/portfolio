@@ -92,6 +92,8 @@ export const en: Content = {
     heading: 'Things I built on my own',
     codeLabel: 'Code',
     demoLabel: 'Demo',
+    codeAria: '{project} source code on GitHub',
+    demoAria: '{project} live demo',
     noDemo: 'No public demo',
     items: {
       'rad-poker': {

@@ -31,6 +31,7 @@ export function Producao({ producao }: { producao: Content['producao'] }) {
                 <div>
                   <h3 className="font-display text-2xl font-extrabold tracking-[-0.03em] md:text-4xl">{item.name}</h3>
                   <p className="mt-2 font-mono text-xs tracking-[0.1em] text-cobalto-claro uppercase">{item.client}</p>
+                  <p className="mt-1 font-mono text-xs tracking-[0.08em] text-areia-mudo uppercase">{copy.role}</p>
                 </div>
                 <span className="rounded-full border border-areia/20 px-3 py-1 font-mono text-[0.65rem] tracking-[0.12em] text-areia-mudo uppercase">
                   {producao.closedSource}

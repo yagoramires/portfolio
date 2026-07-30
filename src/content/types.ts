@@ -52,6 +52,8 @@ export type Content = {
     heading: string;
     codeLabel: string;
     demoLabel: string;
+    codeAria: string;
+    demoAria: string;
     noDemo: string;
     items: Record<ProjectSlug, { description: string }>;
   };

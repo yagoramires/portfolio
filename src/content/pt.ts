@@ -92,6 +92,8 @@ export const pt: Content = {
     heading: 'Coisas que construí por fora',
     codeLabel: 'Código',
     demoLabel: 'Demo',
+    codeAria: 'Código de {project} no GitHub',
+    demoAria: 'Demo de {project}',
     noDemo: 'Sem demo pública',
     items: {
       'rad-poker': {

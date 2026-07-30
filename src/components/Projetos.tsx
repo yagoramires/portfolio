@@ -23,6 +23,7 @@ export function Projetos({ projetos }: { projetos: Content['projetos'] }) {
                   href={project.repo}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={projetos.codeAria.replace('{project}', project.name)}
                   className="inline-flex items-center gap-1.5 text-areia hover:text-cobalto-claro"
                 >
                   {projetos.codeLabel}
@@ -34,6 +35,7 @@ export function Projetos({ projetos }: { projetos: Content['projetos'] }) {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={projetos.demoAria.replace('{project}', project.name)}
                     className="inline-flex items-center gap-1.5 text-areia hover:text-cobalto-claro"
                   >
                     {projetos.demoLabel}
