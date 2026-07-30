@@ -6,7 +6,7 @@ export function Perfil({ perfil }: { perfil: Content['perfil'] }) {
     <section aria-labelledby="perfil-titulo" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
       <SectionHeading id="perfil-titulo" label={perfil.label} heading={perfil.heading} />
 
-      <p className="mt-8 max-w-[52ch] text-base leading-relaxed text-areia-mudo md:text-lg">{perfil.body}</p>
+      <p className="reveal mt-8 max-w-[52ch] text-base leading-relaxed text-areia-mudo md:text-lg">{perfil.body}</p>
 
       <ul className="mt-14 grid gap-px overflow-hidden rounded-lg bg-areia/10 md:grid-cols-3">
         {perfil.pillars.map((pillar) => (

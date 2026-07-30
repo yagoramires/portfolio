@@ -6,7 +6,7 @@ export function Stack({ stack }: { stack: Content['stack'] }) {
     <section aria-labelledby="stack-titulo" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
       <SectionHeading id="stack-titulo" label={stack.label} heading={stack.heading} />
 
-      <dl className="mt-14 grid gap-x-10 gap-y-8 md:grid-cols-2">
+      <dl className="reveal mt-14 grid gap-x-10 gap-y-8 md:grid-cols-2">
         {stack.groups.map((group) => (
           <div key={group.title} className="border-t border-areia/15 pt-5">
             <dt className="font-mono text-[0.7rem] tracking-[0.16em] text-cobalto-claro uppercase">{group.title}</dt>

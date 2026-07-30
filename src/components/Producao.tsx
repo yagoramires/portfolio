@@ -8,7 +8,7 @@ export function Producao({ producao }: { producao: Content['producao'] }) {
     <section aria-labelledby="producao-titulo" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
       <SectionHeading id="producao-titulo" label={producao.label} heading={producao.heading} />
 
-      <p className="mt-6 max-w-[52ch] text-base leading-relaxed text-areia-mudo">{producao.intro}</p>
+      <p className="reveal mt-6 max-w-[52ch] text-base leading-relaxed text-areia-mudo">{producao.intro}</p>
 
       <div className="mt-14 space-y-6">
         {cases.map((item) => {

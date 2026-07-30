@@ -8,7 +8,7 @@ export function Projetos({ projetos }: { projetos: Content['projetos'] }) {
     <section aria-labelledby="projetos-titulo" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
       <SectionHeading id="projetos-titulo" label={projetos.label} heading={projetos.heading} />
 
-      <ul className="mt-14 grid gap-6 md:grid-cols-3">
+      <ul className="reveal mt-14 grid gap-6 md:grid-cols-3">
         {projects.map((project) => {
           const copy = projetos.items[project.slug];
 

@@ -7,7 +7,7 @@ export function Contato({ contato }: { contato: Content['contato'] }) {
     <section aria-labelledby="contato-titulo" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
       <SectionHeading id="contato-titulo" label={contato.label} heading={contato.heading} />
 
-      <p className="mt-6 max-w-[46ch] text-base leading-relaxed text-areia-mudo md:text-lg">{contato.lead}</p>
+      <p className="reveal mt-6 max-w-[46ch] text-base leading-relaxed text-areia-mudo md:text-lg">{contato.lead}</p>
 
       <ul className="mt-12 border-t border-areia/15">
         {contato.links.map((link) => {

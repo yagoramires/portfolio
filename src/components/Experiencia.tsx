@@ -6,7 +6,7 @@ export function Experiencia({ experiencia }: { experiencia: Content['experiencia
     <section aria-labelledby="experiencia-titulo" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
       <SectionHeading id="experiencia-titulo" label={experiencia.label} heading={experiencia.heading} />
 
-      <ol className="mt-14 border-l border-areia/15">
+      <ol className="reveal mt-14 border-l border-areia/15">
         {experiencia.items.map((item) => (
           <li key={`${item.company}-${item.period}`} className="relative pb-14 pl-6 last:pb-0 md:pl-10">
             <span aria-hidden="true" className="absolute top-2 -left-[5px] h-2.5 w-2.5 rounded-full bg-cobalto" />
