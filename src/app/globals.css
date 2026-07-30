@@ -1,0 +1,125 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-breu: #121110;
+  --color-areia: #f0ebe3;
+  --color-areia-mudo: #b5afa6;
+  --color-cobalto: #2b4fff;
+  --color-cobalto-claro: #9aa6ff;
+  --color-painel: #1b1917;
+
+  --font-display: var(--font-bricolage);
+  --font-sans: var(--font-instrument);
+  --font-mono: var(--font-geist-mono);
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) {
+    animation: fade-out 140ms ease both;
+  }
+  ::view-transition-new(root) {
+    animation: fade-in 220ms ease both;
+  }
+
+  .anim-rise {
+    animation: rise 620ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: var(--delay, 0ms);
+  }
+
+  .anim-clip {
+    animation: clip-up 760ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: var(--delay, 0ms);
+  }
+
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 32%;
+    }
+
+    .swipe {
+      animation: swipe-in 500ms ease both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 28%;
+    }
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+}
+
+@keyframes clip-up {
+  from {
+    opacity: 0;
+    clip-path: inset(100% 0 0 0);
+    transform: translateY(0.75rem);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  background-color: var(--color-breu);
+}
+
+body {
+  color: var(--color-areia);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-cobalto);
+  color: var(--color-areia);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-cobalto-claro);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    animation-timeline: auto !important;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
+
+@keyframes swipe-in {
+  from {
+    transform: scaleX(0);
+  }
+}
