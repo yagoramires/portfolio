@@ -9,7 +9,7 @@ export function Contato({ contato }: { contato: Content['contato'] }) {
 
       <p className="reveal mt-6 max-w-[46ch] text-base leading-relaxed text-areia-mudo md:text-lg">{contato.lead}</p>
 
-      <ul className="mt-12 border-t border-areia/15">
+      <ul className="reveal mt-12 border-t border-areia/15">
         {contato.links.map((link) => {
           const isExternal = link.href.startsWith('http');
 
@@ -37,7 +37,7 @@ export function Contato({ contato }: { contato: Content['contato'] }) {
       <a
         href="/curriculo-yago-ramires.pdf"
         download
-        className="mt-12 inline-block bg-cobalto px-7 py-4 font-mono text-xs tracking-[0.14em] text-areia uppercase transition-transform hover:-translate-y-0.5"
+        className="reveal mt-12 inline-block bg-cobalto px-7 py-4 font-mono text-xs tracking-[0.14em] text-areia uppercase transition-transform hover:-translate-y-0.5"
       >
         {contato.resume}
       </a>

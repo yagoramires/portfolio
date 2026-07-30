@@ -11,6 +11,7 @@ export const en: Content = {
     otherLocale: 'pt',
     otherLocaleLabel: 'PT',
     otherLocaleAria: 'View this page in Portuguese',
+    brandAria: 'Back to top',
   },
   hero: {
     eyebrow: 'Frontend Developer · Rio de Janeiro · Remote',
@@ -74,6 +75,7 @@ export const en: Content = {
     intro: 'Two products with real users on the other side. The code is proprietary, so the link goes straight to what is running.',
     closedSource: 'Proprietary code',
     visit: 'Visit live site',
+    visitAria: 'Open {case} live site',
     cases: {
       fluencia: {
         role: 'Development and maintenance',

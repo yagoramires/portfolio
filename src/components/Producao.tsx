@@ -10,7 +10,7 @@ export function Producao({ producao }: { producao: Content['producao'] }) {
 
       <p className="reveal mt-6 max-w-[52ch] text-base leading-relaxed text-areia-mudo">{producao.intro}</p>
 
-      <div className="mt-14 space-y-6">
+      <div className="reveal mt-14 space-y-6">
         {cases.map((item) => {
           const copy = producao.cases[item.slug];
 
@@ -20,6 +20,7 @@ export function Producao({ producao }: { producao: Content['producao'] }) {
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={producao.visitAria.replace('{case}', item.name)}
               className="group relative block overflow-hidden rounded-xl bg-painel p-8 transition-transform duration-300 hover:-translate-y-1 md:p-10"
             >
               <span

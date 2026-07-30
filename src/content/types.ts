@@ -12,6 +12,7 @@ export type Content = {
     otherLocale: Locale;
     otherLocaleLabel: string;
     otherLocaleAria: string;
+    brandAria: string;
   };
   hero: {
     eyebrow: string;
@@ -45,6 +46,7 @@ export type Content = {
     intro: string;
     closedSource: string;
     visit: string;
+    visitAria: string;
     cases: Record<CaseSlug, { role: string; description: string }>;
   };
   projetos: {

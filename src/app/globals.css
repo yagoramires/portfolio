@@ -79,6 +79,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
   background-color: var(--color-breu);
 }
 
@@ -109,6 +110,11 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     animation-timeline: auto !important;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
   }
 }
 

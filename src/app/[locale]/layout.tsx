@@ -39,6 +39,7 @@ export async function generateMetadata({
   const content = getContent(locale);
 
   return {
+    metadataBase: new URL('https://portfolio-2023-sage.vercel.app'),
     title: content.meta.title,
     description: content.meta.description,
     alternates: {
@@ -73,7 +74,7 @@ export default async function LocaleLayout({
             {content.nav.skipToContent}
           </a>
           <Header nav={content.nav} />
-          <div id="conteudo" className="flex-1">
+          <div id="conteudo" tabIndex={-1} className="flex-1">
             {children}
           </div>
           <Footer text={content.footer} />

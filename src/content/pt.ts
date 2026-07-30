@@ -11,6 +11,7 @@ export const pt: Content = {
     otherLocale: 'en',
     otherLocaleLabel: 'EN',
     otherLocaleAria: 'Ver esta página em inglês',
+    brandAria: 'Voltar ao topo',
   },
   hero: {
     eyebrow: 'Desenvolvedor Frontend · Rio de Janeiro · Remoto',
@@ -18,7 +19,7 @@ export const pt: Content = {
     nameBottom: 'Ramires',
     lead: 'Cinco anos transformando produto em interface. Hoje construo e sustento plataformas de educação do Governo do Paraná e da PUCPR em Next.js e TypeScript.',
     statValue: '+30%',
-    statLabel: 'de capacidade de entrega do time',
+    statLabel: 'de aumento na capacidade de entrega do time',
   },
   perfil: {
     label: 'Perfil',
@@ -74,6 +75,7 @@ export const pt: Content = {
     intro: 'Dois produtos com usuário real do outro lado. O código é fechado, então o link vai direto para o que está rodando.',
     closedSource: 'Código proprietário',
     visit: 'Ver no ar',
+    visitAria: 'Ver {case} no ar',
     cases: {
       fluencia: {
         role: 'Desenvolvimento e sustentação',
