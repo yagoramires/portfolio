@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const content = getContent(locale);
 
   return (
-    <main>
+    <main className="space-y-24 md:space-y-36">
       <Hero hero={content.hero} />
       <Perfil perfil={content.perfil} />
       <Experiencia experiencia={content.experiencia} />

@@ -3,7 +3,7 @@ import { SectionHeading } from './SectionHeading';
 
 export function Experiencia({ experiencia }: { experiencia: Content['experiencia'] }) {
   return (
-    <section aria-labelledby="experiencia-titulo" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+    <section aria-labelledby="experiencia-titulo" className="mx-auto max-w-6xl px-6">
       <SectionHeading id="experiencia-titulo" label={experiencia.label} heading={experiencia.heading} />
 
       <ol className="reveal mt-14 border-l border-areia/15">

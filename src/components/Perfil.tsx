@@ -3,7 +3,7 @@ import { SectionHeading } from './SectionHeading';
 
 export function Perfil({ perfil }: { perfil: Content['perfil'] }) {
   return (
-    <section aria-labelledby="perfil-titulo" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+    <section aria-labelledby="perfil-titulo" className="mx-auto max-w-6xl px-6">
       <SectionHeading id="perfil-titulo" label={perfil.label} heading={perfil.heading} />
 
       <p className="reveal mt-8 max-w-[52ch] text-base leading-relaxed text-areia-mudo md:text-lg">{perfil.body}</p>

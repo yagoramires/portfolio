@@ -5,7 +5,7 @@ import { ExternalIcon } from './ExternalIcon';
 
 export function Projetos({ projetos }: { projetos: Content['projetos'] }) {
   return (
-    <section aria-labelledby="projetos-titulo" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+    <section aria-labelledby="projetos-titulo" className="mx-auto max-w-6xl px-6">
       <SectionHeading id="projetos-titulo" label={projetos.label} heading={projetos.heading} />
 
       <ul className="reveal mt-14 grid gap-6 md:grid-cols-3">

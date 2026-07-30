@@ -3,7 +3,7 @@ import type { Content } from '@/content';
 
 export function Hero({ hero }: { hero: Content['hero'] }) {
   return (
-    <section id="topo" aria-labelledby="hero-nome" className="mx-auto max-w-6xl px-6 pt-16 pb-24 md:pt-24 md:pb-32">
+    <section id="topo" aria-labelledby="hero-nome" className="mx-auto max-w-6xl px-6 pt-16 md:pt-24">
       <p
         className="anim-rise font-mono text-[0.7rem] tracking-[0.18em] text-cobalto-claro uppercase"
         style={{ '--delay': '80ms' } as CSSProperties}

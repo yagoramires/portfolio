@@ -4,7 +4,7 @@ import { ExternalIcon } from './ExternalIcon';
 
 export function Contato({ contato }: { contato: Content['contato'] }) {
   return (
-    <section aria-labelledby="contato-titulo" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+    <section aria-labelledby="contato-titulo" className="mx-auto max-w-6xl px-6 pb-20 md:pb-28">
       <SectionHeading id="contato-titulo" label={contato.label} heading={contato.heading} />
 
       <p className="reveal mt-6 max-w-[46ch] text-base leading-relaxed text-areia-mudo md:text-lg">{contato.lead}</p>

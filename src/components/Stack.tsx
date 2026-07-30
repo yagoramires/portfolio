@@ -3,7 +3,7 @@ import { SectionHeading } from './SectionHeading';
 
 export function Stack({ stack }: { stack: Content['stack'] }) {
   return (
-    <section aria-labelledby="stack-titulo" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+    <section aria-labelledby="stack-titulo" className="mx-auto max-w-6xl px-6">
       <SectionHeading id="stack-titulo" label={stack.label} heading={stack.heading} />
 
       <dl className="reveal mt-14 grid gap-x-10 gap-y-8 md:grid-cols-2">
