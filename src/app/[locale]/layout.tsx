@@ -1,7 +1,27 @@
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
+import { Bricolage_Grotesque, Instrument_Sans, Geist_Mono } from 'next/font/google';
 import { notFound } from 'next/navigation';
-import { getContent, isLocale, locales, type Locale } from '@/content';
+import { getContent, isLocale, locales } from '@/content';
+import '../globals.css';
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ['latin'],
+  variable: '--font-bricolage',
+  display: 'swap',
+});
+
+const instrument = Instrument_Sans({
+  subsets: ['latin'],
+  variable: '--font-instrument',
+  display: 'swap',
+});
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
+  display: 'swap',
+});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -36,13 +56,12 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
 
-  return <LocaleShell locale={locale}>{children}</LocaleShell>;
-}
-
-function LocaleShell({ locale, children }: { locale: Locale; children: ReactNode }) {
   return (
-    <div lang={locale === 'pt' ? 'pt-BR' : 'en'} className="min-h-dvh">
-      {children}
-    </div>
+    <html
+      lang={locale === 'pt' ? 'pt-BR' : 'en'}
+      className={`${bricolage.variable} ${instrument.variable} ${geistMono.variable}`}
+    >
+      <body className="bg-breu font-sans antialiased">{children}</body>
+    </html>
   );
 }
