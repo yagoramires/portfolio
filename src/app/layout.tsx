@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html className={`${bricolage.variable} ${instrument.variable} ${geistMono.variable}`}>
+    <html lang="pt-BR" className={`${bricolage.variable} ${instrument.variable} ${geistMono.variable}`}>
       <body className="bg-breu font-sans antialiased">{children}</body>
     </html>
   );
