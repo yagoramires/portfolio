@@ -5,6 +5,8 @@ import { Perfil } from '@/components/Perfil';
 import { Experiencia } from '@/components/Experiencia';
 import { Producao } from '@/components/Producao';
 import { Projetos } from '@/components/Projetos';
+import { Stack } from '@/components/Stack';
+import { Contato } from '@/components/Contato';
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -18,6 +20,8 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       <Experiencia experiencia={content.experiencia} />
       <Producao producao={content.producao} />
       <Projetos projetos={content.projetos} />
+      <Stack stack={content.stack} />
+      <Contato contato={content.contato} />
     </main>
   );
 }
