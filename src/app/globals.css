@@ -13,6 +13,31 @@
   --font-mono: var(--font-geist-mono);
 }
 
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) {
+    animation: fade-out 140ms ease both;
+  }
+  ::view-transition-new(root) {
+    animation: fade-in 220ms ease both;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   background-color: var(--color-breu);

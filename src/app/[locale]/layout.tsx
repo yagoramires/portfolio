@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { Bricolage_Grotesque, Instrument_Sans, Geist_Mono } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { getContent, isLocale, locales } from '@/content';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 import '../globals.css';
 
 const bricolage = Bricolage_Grotesque({
@@ -55,13 +57,28 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
+  const content = getContent(locale);
 
   return (
     <html
       lang={locale === 'pt' ? 'pt-BR' : 'en'}
       className={`${bricolage.variable} ${instrument.variable} ${geistMono.variable}`}
     >
-      <body className="bg-breu font-sans antialiased">{children}</body>
+      <body className="bg-breu font-sans antialiased">
+        <div className="flex min-h-dvh flex-col">
+          <a
+            href="#conteudo"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-cobalto focus:px-4 focus:py-2"
+          >
+            {content.nav.skipToContent}
+          </a>
+          <Header nav={content.nav} />
+          <div id="conteudo" className="flex-1">
+            {children}
+          </div>
+          <Footer text={content.footer} />
+        </div>
+      </body>
     </html>
   );
 }
