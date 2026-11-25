@@ -18,8 +18,6 @@ export const en: Content = {
     nameTop: 'Yago',
     nameBottom: 'Ramires',
     lead: 'Five years turning product into interface. Today I build and maintain education platforms for the Paraná State Government and PUCPR in Next.js and TypeScript.',
-    statValue: '+30%',
-    statLabel: 'increase in team delivery capacity',
   },
   perfil: {
     label: 'Profile',
@@ -38,6 +36,12 @@ export const en: Content = {
         title: 'Automated testing',
         text: 'Vitest for units and Playwright for end-to-end flows, covering the path users actually take.',
       },
+    ],
+    stats: [
+      { value: '{years}', unit: 'years', label: 'building for the web, since 2021' },
+      { value: '+30%', label: 'team delivery capacity' },
+      { value: '2', unit: 'platforms', label: 'in production, with real users' },
+      { value: '6', unit: 'apps', label: 'of my own, shipped' },
     ],
   },
   experiencia: {
@@ -69,25 +73,70 @@ export const en: Content = {
       },
     ],
   },
-  producao: {
-    label: 'In production',
-    heading: 'Software that is already live',
-    intro: 'Two products with real users on the other side. The code is proprietary, so the link goes straight to what is running.',
-    closedSource: 'Proprietary code',
-    visit: 'Visit live site',
-    visitAria: 'Open {case} live site',
-    cases: {
-      fluencia: {
-        role: 'Development and maintenance',
-        description:
-          'Digital education platform for the state of Paraná, used by the public school network for school management. I work on new features, bug fixing and refactoring.',
-      },
+  servicos: {
+    label: 'What I do',
+    intro: 'From the first component to the last test.',
+    skip: 'Skip to the next section',
+  },
+  processo: {
+    heading: 'From first brief\nto long after launch',
+    items: [
+      { title: 'Understand', text: 'What people need, and what done looks like.' },
+      { title: 'Design', text: 'Figma screens and components before any code.' },
+      { title: 'Architect', text: 'Data, state and APIs mapped out first.' },
+      { title: 'Build', text: 'Next.js and TypeScript, in small reviewed PRs.' },
+      { title: 'Test', text: 'Vitest and Playwright on the paths people use.' },
+      { title: 'Maintain', text: 'When something breaks, I fix it. Then keep improving.' },
+    ],
+  },
+  trabalhos: {
+    label: 'Selected work',
+    heading: 'Work I have had a hand in',
+    visit: 'Visit',
+    visitAria: 'Open {project}',
+    items: {
       carreira: {
-        role: 'Development and maintenance',
-        description:
-          'Platform from Pontifícia Universidade Católica do Paraná focused on medical careers, with content and learning tracks for students and professionals.',
+        meta: 'PUCPR · Built at Radhark Tech',
+        description: 'Medical-career platform from PUCPR, with content and learning tracks for students and doctors.',
+      },
+      aira: {
+        meta: 'Google Cloud · Open-source contribution',
+        description: 'Open-source experiment by Google Cloud education engineers that helps teachers spot reading gaps.',
+      },
+      yield: {
+        meta: 'macOS and Windows · My own',
+        description: 'Local-first personal finance: spending, subscriptions, portfolio and stock tax, with read-only Open Finance.',
+      },
+      pump: {
+        meta: 'PWA · My own',
+        description: 'Workout and diet on the phone. No account, and the data never leaves the device.',
+      },
+      neyhub: {
+        meta: 'macOS · My own',
+        description: 'A store and hub for my menu bar apps: install, update and use each one in one place.',
       },
     },
+  },
+  lema: {
+    label: 'My motto',
+    line1: 'Production',
+    line2: 'forgives',
+    accent: 'nothing.',
+    hint: 'Hover to read the honest version',
+    honest: 'Tests forgive a lot.',
+  },
+  fora: {
+    label: 'Off the clock',
+    aside: 'Music and games',
+    heading: 'After hours',
+    musicLabel: 'On repeat',
+    openSpotify: 'Open on Spotify',
+    gamesLabel: 'Playing',
+    now: 'Now',
+    next: 'Next',
+    // fill these in to show the section
+    spotifyEmbed: null,
+    games: [],
   },
   projetos: {
     label: 'Side projects',
@@ -135,6 +184,35 @@ export const en: Content = {
       { label: 'GitHub', value: '@yagoramires', href: 'https://github.com/yagoramires' },
       { label: 'WhatsApp', value: '+55 21 96971-1937', href: 'https://wa.me/5521969711937' },
     ],
+  },
+  ui: {
+    available: 'Open to remote roles',
+    menu: 'Menu',
+    menuOpen: 'Open menu',
+    menuClose: 'Close',
+    menuLabel: 'Site menu',
+    marquee: 'Frontend Developer',
+    dockLabel: 'Language and résumé',
+    dockCv: 'CV',
+    ctaPrimary: "Let's talk",
+    ctaSecondary: 'See the work',
+    city: 'Rio de Janeiro',
+    behindLondon: '{n} hours behind London',
+    asides: {
+      perfil: 'Rio de Janeiro, working remotely',
+      servicos: 'Day to day',
+      trabalhos: 'Team and personal',
+      projetos: 'Built on my own',
+      experiencia: 'Since 2021',
+      contato: 'Rio de Janeiro, BRT (UTC−3)',
+    },
+    yearN: 'Year {n}',
+    yearsIn: '{n} years in',
+    now: 'Now',
+    history: 'History',
+    version: 'Version',
+    localTime: 'Local time',
+    elsewhere: 'Elsewhere',
   },
   footer: 'Yago Ramires · 2026 · built with Next.js, TypeScript and Tailwind CSS',
 };

@@ -1,13 +1,19 @@
-export function SectionHeading({ id, label, heading }: { id: string; label: string; heading: string }) {
+type Props = { index: string; label: string; aside?: string; className?: string };
+
+/** "(01)  LABEL ............ aside" rule that opens every section. */
+export function SectionHeading({ index, label, aside, className = 'mb-16 border-t md:mb-24' }: Props) {
   return (
-    <div className="reveal max-w-3xl">
-      <p className="flex items-center gap-3 font-mono text-[0.7rem] tracking-[0.18em] text-cobalto-claro uppercase">
-        <span aria-hidden="true" className="swipe inline-block h-3 w-8 shrink-0 origin-left bg-cobalto" />
+    <header
+      data-reveal=""
+      className={`sh grid grid-cols-[var(--index-col)_1fr] items-baseline border-line pt-6 md:grid-cols-[var(--index-col)_1fr_auto] ${className}`}
+    >
+      <span data-scramble="" className="text-step--1 tracking-[0.02em]">
+        {`(${index})`}
+      </span>
+      <p data-scramble="" className="text-step--1 leading-none font-bold tracking-[0.2em] uppercase">
         {label}
       </p>
-      <h2 id={id} className="mt-4 font-display text-3xl leading-[1.05] font-extrabold tracking-[-0.035em] md:text-5xl">
-        {heading}
-      </h2>
-    </div>
+      {aside && <p className="col-start-2 mt-2 text-sm text-fg-muted md:col-start-auto md:mt-0 md:text-right">{aside}</p>}
+    </header>
   );
 }

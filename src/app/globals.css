@@ -3,88 +3,121 @@
 @theme {
   --color-breu: #121110;
   --color-areia: #f0ebe3;
-  --color-areia-mudo: #b5afa6;
   --color-cobalto: #2b4fff;
   --color-cobalto-claro: #9aa6ff;
-  --color-painel: #1b1917;
+
+  --color-canvas: var(--canvas);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-line: var(--line);
+  --color-accent: var(--color-cobalto);
+  --color-accent-text: var(--accent-text);
 
   --font-display: var(--font-bricolage);
   --font-sans: var(--font-instrument);
   --font-mono: var(--font-geist-mono);
+
+  /* perfect-fourth scale, sized to match the reference at 1440px */
+  --text-step--1: 0.75rem;
+  --text-step-0: 1rem;
+  --text-step-1: clamp(1.125rem, 1.48vw, 1.5rem);
+  --text-step-2: clamp(1.25rem, 1.973vw, 2rem);
+  --text-step-3: clamp(1.5rem, 2.632vw, 2.6rem);
+  --text-step-4: clamp(1.9rem, 3.508vw, 3.6rem);
+  --text-step-5: clamp(2.2rem, 4.676vw, 4.8rem);
+  --text-step-6: clamp(2.6rem, 6.233vw, 6.4rem);
+  --text-step-7: clamp(3rem, 8.309vw, 8.6rem);
+  --text-step-year: clamp(6rem, 19.5vw, 20rem);
+
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-@view-transition {
-  navigation: auto;
+/* registered so the theme switch interpolates instead of snapping */
+@property --canvas {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #121110;
+}
+@property --fg {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f0ebe3;
+}
+@property --fg-muted {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgb(240 235 227 / 0.62);
+}
+@property --line {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgb(240 235 227 / 0.14);
+}
+@property --accent-text {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #9aa6ff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  ::view-transition-old(root) {
-    animation: fade-out 140ms ease both;
-  }
-  ::view-transition-new(root) {
-    animation: fade-in 220ms ease both;
-  }
-
-  .anim-rise {
-    animation: rise 620ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-    animation-delay: var(--delay, 0ms);
-  }
-
-  .anim-clip {
-    animation: clip-up 760ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-    animation-delay: var(--delay, 0ms);
-  }
-
-  @supports (animation-timeline: view()) {
-    .reveal {
-      animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 32%;
-    }
-
-    .swipe {
-      animation: swipe-in 500ms ease both;
-      animation-timeline: view();
-      animation-range: entry 10% cover 28%;
-    }
-  }
+:root {
+  --canvas: #121110;
+  --fg: #f0ebe3;
+  --fg-muted: rgb(240 235 227 / 0.62);
+  --line: rgb(240 235 227 / 0.14);
+  --accent-text: #9aa6ff;
+  --gutter: 1rem;
+  --index-col: 2.75rem;
+  transition:
+    --canvas 0.9s,
+    --fg 0.9s,
+    --fg-muted 0.9s,
+    --line 0.9s,
+    --accent-text 0.9s;
 }
 
-@keyframes fade-out {
-  to {
-    opacity: 0;
-  }
+:root[data-theme='light'] {
+  --canvas: #f0ebe3;
+  --fg: #121110;
+  --fg-muted: rgb(18 17 16 / 0.62);
+  --line: rgb(18 17 16 / 0.12);
+  --accent-text: #2b4fff;
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
+@media (min-width: 768px) {
+  :root {
+    --gutter: 2rem;
+    --index-col: 4rem;
   }
 }
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(1.25rem);
-  }
-}
-
-@keyframes clip-up {
-  from {
-    opacity: 0;
-    clip-path: inset(100% 0 0 0);
-    transform: translateY(0.75rem);
+@media (min-width: 1280px) {
+  :root {
+    --gutter: 4rem;
+    /* one column of the 12-col grid plus its 24px gap */
+    --index-col: calc((100vw - var(--gutter) * 2 - 24px * 11) / 12 + 24px);
   }
 }
 
 html {
-  scroll-behavior: smooth;
+  background-color: var(--canvas);
   scroll-padding-top: 5rem;
-  background-color: var(--color-breu);
+  overflow-x: clip;
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
 }
 
 body {
-  color: var(--color-areia);
+  background-color: var(--canvas);
+  color: var(--fg);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -99,27 +132,482 @@ body {
   border-radius: 2px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+.gutter {
+  padding-inline: var(--gutter);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.light-display {
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+/* ---------- reveal: fade-up when 15% visible ---------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.9s var(--ease-out-expo),
+    transform 0.9s var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal='in'] {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- split: masked word rise ---------- */
+.split-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0 0.1em 0.18em 0.06em;
+  margin: 0 -0.1em -0.18em -0.06em;
+}
+.split-word {
+  display: inline-block;
+  white-space: nowrap;
+  transform: translateY(110%) rotate(4deg);
+  transform-origin: left top;
+  transition: transform 1.1s var(--ease-out-expo);
+  transition-delay: calc(var(--w) * 45ms + var(--split-delay, 0ms));
+}
+[data-split='in'] .split-word {
+  transform: none;
+}
+.prox-char {
+  display: inline-block;
+  transition: transform 0.45s var(--ease-out-expo);
+}
+
+/* ---------- fill: circle grows from the cursor ---------- */
+.fill {
+  --fill-bg: var(--fg);
+  --fill-fg: var(--canvas);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    color 0.45s var(--ease-out-expo),
+    border-color 0.45s var(--ease-out-expo);
+}
+.fill::before {
+  content: '';
+  position: absolute;
+  left: var(--fx, 50%);
+  top: var(--fy, 50%);
+  width: var(--fd, 300px);
+  height: var(--fd, 300px);
+  margin: calc(var(--fd, 300px) / -2) 0 0 calc(var(--fd, 300px) / -2);
+  border-radius: 50%;
+  background: var(--fill-bg);
+  transform: scale(0);
+  transition: transform 0.65s var(--ease-out-expo);
+  z-index: -1;
+  pointer-events: none;
+}
+.fill.is-filled {
+  color: var(--fill-fg) !important;
+  border-color: var(--fill-bg) !important;
+}
+.fill.is-filled::before {
+  transform: scale(1);
+}
+
+/* ---------- load sequence ---------- */
+html:not(.is-loaded) .nav-anim {
+  opacity: 0;
+  transform: translateY(-14px);
+}
+html.is-loaded .nav-anim {
+  animation: nav-in 0.9s var(--ease-out-expo) both;
+  animation-delay: calc(var(--d, 0) * 70ms + 0.25s);
+}
+html:not(.is-loaded) .hero-lead-in {
+  opacity: 0;
+}
+html.is-loaded .hero-lead-in {
+  animation: hero-lead-in 0.9s var(--ease-out-expo) 0.75s backwards;
+}
+html:not(.is-loaded) .location-in {
+  opacity: 0;
+}
+html.is-loaded .location-in {
+  animation: location-in 1.2s var(--ease-out-expo) 0.45s backwards;
+}
+.logo-dots i {
+  display: block;
+  width: 0.36em;
+  height: 0.36em;
+  border-radius: 50%;
+  background: var(--color-cobalto);
+}
+/* the reference mounts the nav only once the site has loaded, so the dots count from there */
+html:not(.is-loaded) .logo-dots i {
+  opacity: 0;
+}
+html.is-loaded .logo-dots i {
+  animation: logo-dot-in 0.7s var(--ease-spring) calc(0.9s + var(--n) * 0.14s) backwards;
+}
+.logo:hover .logo-dots i,
+.logo:focus-visible .logo-dots i {
+  animation: logo-dot-hop 0.62s var(--ease-out-expo) calc(var(--n) * 0.11s);
+}
+.roll {
+  display: inline-block;
+  height: 1.25em;
+  overflow: hidden;
+}
+.roll-track {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.55s var(--ease-out-expo);
+  transition-delay: calc(var(--i) * 22ms);
+}
+.logo:hover .roll-track,
+.logo:focus-visible .roll-track {
+  transform: translateY(-50%);
+}
+.dock-in {
+  animation: dock-in 0.7s var(--ease-out-expo) 0.6s backwards;
+}
+
+@keyframes nav-in {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
   }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes hero-lead-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+@keyframes location-in {
+  from {
+    opacity: 0;
+    transform: translate(-100%);
+  }
+}
+@keyframes logo-dot-in {
+  from {
+    transform: translateY(-1em);
+    opacity: 0;
+  }
+}
+@keyframes logo-dot-hop {
+  0%,
+  100% {
+    transform: none;
+  }
+  40% {
+    transform: translateY(-0.6em) scale(1.15);
+  }
+  70% {
+    transform: translateY(0.05em) scaleY(0.85);
+  }
+}
+@keyframes dock-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--pulse-color, var(--color-cobalto)) 60%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 var(--pulse-size, 8px) transparent;
+  }
+}
+.pulse {
+  animation: pulse-ring 2.2s ease-out infinite;
+}
+
+/* ---------- menu ---------- */
+.menu[data-state='open'] .menu-bg {
+  animation: menu-open 0.9s var(--ease-in-out-quart) both;
+}
+.menu[data-state='closing'] .menu-bg {
+  animation: menu-open 0.65s var(--ease-in-out-quart) 0.1s reverse both;
+}
+.menu[data-state='open'] .menu-link-inner {
+  animation: link-in 0.9s var(--ease-out-expo) both;
+  animation-delay: calc(var(--i) * 55ms + 0.3s);
+}
+.menu[data-state='closing'] .menu-link-inner {
+  animation: link-out 0.35s ease-in both;
+  animation-delay: calc(var(--i) * 25ms);
+}
+.menu[data-state='open'] .menu-bar {
+  animation: bar-in 0.7s ease 0.65s both;
+}
+.menu[data-state='closing'] .menu-bar,
+.menu[data-state='closing'] .menu-marquee {
+  animation: fade-out 0.25s ease both;
+}
+.menu[data-state='open'] .menu-marquee {
+  animation: fade-in 1.2s ease 0.5s both;
+}
+.marquee-track {
+  animation: marquee 48s linear infinite;
+}
+@keyframes menu-open {
+  from {
+    clip-path: circle(0 at var(--ox) var(--oy));
+  }
+  to {
+    clip-path: circle(150vmax at var(--ox) var(--oy));
+  }
+}
+@keyframes link-in {
+  from {
+    transform: translateY(110%) rotate(3deg);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes link-out {
+  to {
+    transform: translateY(-110%);
+  }
+}
+@keyframes bar-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes marquee {
+  to {
+    transform: translate(-50%);
+  }
+}
+
+/* ---------- chapter label swap ---------- */
+.chapter-text {
+  display: inline-block;
+  animation: chapter-in 0.45s var(--ease-out-expo) both;
+}
+@keyframes chapter-in {
+  from {
+    opacity: 0;
+    transform: translateY(-40%);
+  }
+}
+
+/* ---------- work / building rows: dim the others on hover ---------- */
+/* children fade, not the row, so the row's own [data-reveal] transition stays intact */
+.rows:has(.row:hover) .row:not(:hover) > * {
+  opacity: 0.3;
+}
+.row > * {
+  transition: opacity 0.4s ease;
+}
+.row-title {
+  transition:
+    transform 0.6s var(--ease-out-expo),
+    opacity 0.4s ease;
+}
+.row:hover .row-title {
+  transform: translate(1.25rem);
+}
+.row-arrow {
+  transform: rotate(45deg);
+  opacity: 0.5;
+  transition:
+    transform 0.5s var(--ease-out-expo),
+    opacity 0.3s ease;
+}
+.row:hover .row-arrow {
+  transform: none;
+  opacity: 1;
+}
+.row:hover .row-index {
+  color: var(--accent-text);
+}
+
+/* ---------- experience ---------- */
+.exp-strip {
+  display: block;
+  transform: translateY(calc(var(--digit) * -1em));
+  transition: transform 0.9s var(--ease-out-expo);
+}
+.exp-strip span {
+  display: block;
+  height: 1em;
+}
+.toolkit {
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.tool::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-cobalto);
+  margin: 0 2rem;
+}
+
+/* ---------- hero portrait (Portrait.tsx) ---------- */
+/* fixed behind the page content (#conteudo sits at z-index 1) */
+.portrait-fx {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.hero-reveal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  mask-image: radial-gradient(circle var(--r, 0px) at var(--mx, 50%) var(--my, 50%), #000 45%, transparent 100%);
+}
+.hero-reveal img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* no WebGL (or a software renderer): the plain cut-out photo */
+.hero-portrait.is-static {
+  background: url(/portrait.webp) center / contain no-repeat;
+}
+
+/* ---------- pinned stages (Servicos, Processo, Trabalhos) ---------- */
+@media (min-width: 1024px) {
+  .stage {
+    height: calc(30vh * var(--count) + 100vh);
+  }
+  .stage-work {
+    height: calc(38vh * var(--count) + 100vh);
+  }
+  .services-slot {
+    justify-self: end;
+    width: min(100%, calc((100vh - 18rem) * 1.6));
+    aspect-ratio: 16 / 10;
+  }
+  .process-slot {
+    justify-self: start;
+    width: min(100%, calc((100vh - 18rem) * 1.6));
+    aspect-ratio: 16 / 10;
+  }
+}
+.stage-roll {
+  animation: stage-roll 0.55s var(--ease-out-expo) both;
+}
+.stage-fade {
+  animation: fade-in 0.26s ease both;
+}
+@keyframes stage-roll {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+/* ---------- dot layer (DotStage.tsx) ---------- */
+.dots-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+/* shapes drawn over content (the open side-project card, the experience wave) */
+html.dots-over .dots-canvas {
+  z-index: 2;
+}
+/* the stage layer takes over from the portrait layer's forms */
+.portrait-fx {
+  transition: opacity 0.3s ease;
+}
+html.dots-active .portrait-fx {
+  opacity: 0;
+}
+
+/* ---------- motto lens ---------- */
+.lema-fade {
+  transition: opacity 0.3s ease;
+}
+#lema:has([data-lens='on']) .lema-fade {
+  opacity: 0;
+}
+
+/* ---------- film grain ---------- */
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1.2s steps(6) infinite;
+}
+@keyframes grain {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-6%, 4%);
+  }
+  40% {
+    transform: translate(5%, -7%);
+  }
+  60% {
+    transform: translate(-3%, 8%);
+  }
+  80% {
+    transform: translate(7%, 2%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    animation-timeline: auto !important;
   }
-
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
+  [data-reveal],
+  .split-word {
+    opacity: 1;
+    transform: none;
+  }
+  .grain,
+  .marquee-track {
     animation: none !important;
-  }
-}
-
-@keyframes swipe-in {
-  from {
-    transform: scaleX(0);
   }
 }

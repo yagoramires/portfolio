@@ -1,4 +1,4 @@
-import type { CaseSlug, ProjectSlug } from './projects';
+import type { ProjectSlug, WorkSlug } from './projects';
 
 export type Locale = 'pt' | 'en';
 
@@ -19,14 +19,14 @@ export type Content = {
     nameTop: string;
     nameBottom: string;
     lead: string;
-    statValue: string;
-    statLabel: string;
   };
   perfil: {
     label: string;
     heading: string;
     body: string;
     pillars: { title: string; text: string }[];
+    /** `{years}` in a value is replaced with the years since 2021 */
+    stats: { value: string; unit?: string; label: string }[];
   };
   experiencia: {
     label: string;
@@ -40,14 +40,42 @@ export type Content = {
       bullets: string[];
     }[];
   };
-  producao: {
+  servicos: {
+    label: string;
+    intro: string;
+    skip: string;
+  };
+  processo: {
+    heading: string;
+    items: { title: string; text: string }[];
+  };
+  trabalhos: {
     label: string;
     heading: string;
-    intro: string;
-    closedSource: string;
     visit: string;
     visitAria: string;
-    cases: Record<CaseSlug, { role: string; description: string }>;
+    items: Record<WorkSlug, { meta: string; description: string }>;
+  };
+  lema: {
+    label: string;
+    line1: string;
+    line2: string;
+    accent: string;
+    hint: string;
+    honest: string;
+  };
+  fora: {
+    label: string;
+    aside: string;
+    heading: string;
+    musicLabel: string;
+    openSpotify: string;
+    gamesLabel: string;
+    now: string;
+    next: string;
+    /** Spotify embed URL (open.spotify.com/embed/playlist/…); the section stays hidden until music or games are set */
+    spotifyEmbed: string | null;
+    games: { title: string; note: string; status: 'now' | 'next' }[];
   };
   projetos: {
     label: string;
@@ -70,6 +98,30 @@ export type Content = {
     lead: string;
     resume: string;
     links: { label: string; value: string; href: string }[];
+  };
+  ui: {
+    available: string;
+    menu: string;
+    menuOpen: string;
+    menuClose: string;
+    menuLabel: string;
+    marquee: string;
+    dockLabel: string;
+    dockCv: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    city: string;
+    /** `{n}` = whole hours; used when Rio is behind London */
+    behindLondon: string;
+    asides: Record<'perfil' | 'servicos' | 'trabalhos' | 'projetos' | 'experiencia' | 'contato', string>;
+    /** `{n}` = year count */
+    yearN: string;
+    yearsIn: string;
+    now: string;
+    history: string;
+    version: string;
+    localTime: string;
+    elsewhere: string;
   };
   footer: string;
 };

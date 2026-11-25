@@ -1,46 +1,117 @@
+import type { CSSProperties } from 'react';
 import type { Content } from '@/content';
 import { SectionHeading } from './SectionHeading';
-import { ExternalIcon } from './ExternalIcon';
+import { Split } from './Split';
+import { RioClock } from './Hero';
 
-export function Contato({ contato }: { contato: Content['contato'] }) {
+type Props = { contato: Content['contato']; ui: Content['ui']; footer: string; index: string };
+
+export function Contato({ contato, ui, footer, index }: Props) {
+  const social = contato.links.filter((l) => l.href.startsWith('http'));
+
   return (
-    <section aria-labelledby="contato-titulo" className="mx-auto max-w-6xl px-6 pb-20 md:pb-28">
-      <SectionHeading id="contato-titulo" label={contato.label} heading={contato.heading} />
+    <footer
+      id="contato"
+      aria-labelledby="contato-titulo"
+      data-theme="dark"
+      data-chapter={`(${index}) ${contato.label}`}
+      className="overflow-hidden pt-24 md:pt-32"
+    >
+      <div className="gutter">
+        <SectionHeading index={index} label={contato.label} aside={ui.asides.contato} />
 
-      <p className="reveal mt-6 max-w-[46ch] text-base leading-relaxed text-areia-mudo md:text-lg">{contato.lead}</p>
+        <p data-reveal="" className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm">
+          <span aria-hidden="true" className="pulse h-2 w-2 rounded-full bg-[#3ddc84] [--pulse-color:#3ddc84]" />
+          {ui.available}
+        </p>
 
-      <ul className="reveal mt-12 border-t border-areia/15">
-        {contato.links.map((link) => {
-          const isExternal = link.href.startsWith('http');
+        <Split
+          as="h2"
+          id="contato-titulo"
+          prox
+          text={contato.heading}
+          className="display mt-10 max-w-[64rem] text-step-7 md:ml-[var(--index-col)]"
+        />
 
-          return (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                target={isExternal ? '_blank' : undefined}
-                rel={isExternal ? 'noopener noreferrer' : undefined}
-                className="group flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-areia/15 py-5 transition-colors hover:bg-painel"
-              >
-                <span className="font-display text-2xl font-bold tracking-[-0.03em] group-hover:text-cobalto-claro md:text-3xl">
-                  {link.label}
+        <div className="mt-16 grid items-center gap-12 lg:grid-cols-12 lg:gap-6">
+          <div className="lg:col-span-8">
+            <p
+              data-reveal=""
+              style={{ '--reveal-delay': '100ms' } as CSSProperties}
+              className="max-w-[40ch] text-step-1 leading-snug text-fg-muted"
+            >
+              {contato.lead}
+            </p>
+            <ul data-reveal="" style={{ '--reveal-delay': '200ms' } as CSSProperties} className="mt-10 flex flex-wrap gap-3">
+              {contato.links.map((link) => {
+                const external = link.href.startsWith('http');
+                return (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      target={external ? '_blank' : undefined}
+                      rel={external ? 'noopener noreferrer' : undefined}
+                      data-fill
+                      className="inline-flex rounded-full border border-line px-6 py-3.5 text-sm"
+                    >
+                      <span className="text-fg-muted">{link.label}</span>&nbsp;&nbsp;{link.value}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          <div className="lg:col-span-4 lg:justify-self-end">
+            <a
+              href="/curriculo-yago-ramires.pdf"
+              download
+              data-magnetic="0.3"
+              className="grid aspect-square w-48 place-items-center rounded-full bg-cobalto p-8 text-center text-sm text-white transition-colors hover:bg-[#4463ff]"
+            >
+              <span className="flex flex-col items-center gap-2">
+                {contato.resume}
+                <span aria-hidden="true" className="text-lg">
+                  ↓
                 </span>
-                <span className="inline-flex items-center gap-2 font-mono text-sm text-areia-mudo">
-                  {link.value}
-                  {isExternal ? <ExternalIcon /> : null}
-                </span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+              </span>
+            </a>
+          </div>
+        </div>
 
-      <a
-        href="/curriculo-yago-ramires.pdf"
-        download
-        className="reveal mt-12 inline-block bg-cobalto px-7 py-4 font-mono text-xs tracking-[0.14em] text-areia uppercase transition-transform hover:-translate-y-0.5"
-      >
-        {contato.resume}
-      </a>
-    </section>
+        <div className="mt-24 grid gap-8 border-t border-line pt-8 text-sm sm:grid-cols-3">
+          <div>
+            <p className="text-step--1 tracking-[0.12em] text-fg-muted uppercase">{ui.version}</p>
+            <p className="mt-3 text-fg-muted">{footer}</p>
+          </div>
+          <div>
+            <p className="text-step--1 tracking-[0.12em] text-fg-muted uppercase">{ui.localTime}</p>
+            <p className="mt-3 tabular-nums">
+              <RioClock />
+            </p>
+          </div>
+          <div>
+            <p className="text-step--1 tracking-[0.12em] text-fg-muted uppercase">{ui.elsewhere}</p>
+            <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1">
+              {social.map((l) => (
+                <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="hover:text-accent-text">
+                  {l.label}
+                </a>
+              ))}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div aria-hidden="true" className="mt-16 overflow-hidden pb-24 whitespace-nowrap text-fg/15 select-none">
+        <div className="marquee-track display inline-flex text-[clamp(5rem,16vw,16rem)] leading-[0.9]">
+          {[0, 1].map((k) => (
+            <span key={k} className="pr-[0.3em]">
+              Yago Ramires ● Yago Ramires ●&nbsp;
+            </span>
+          ))}
+        </div>
+      </div>
+    </footer>
   );
 }

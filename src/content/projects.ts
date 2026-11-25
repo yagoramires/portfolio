@@ -1,12 +1,11 @@
-export type CaseSlug = 'fluencia' | 'carreira';
+export type WorkSlug = 'carreira' | 'aira' | 'yield' | 'pump' | 'neyhub';
 export type ProjectSlug = 'rad-poker' | 'barber-shop' | 'd2b';
 
-export type Case = {
-  slug: CaseSlug;
+export type Work = {
+  slug: WorkSlug;
   name: string;
-  client: string;
   url: string;
-  stack: string[];
+  image: string;
 };
 
 export type Project = {
@@ -17,21 +16,12 @@ export type Project = {
   stack: string[];
 };
 
-export const cases: Case[] = [
-  {
-    slug: 'fluencia',
-    name: 'Fluência Paraná',
-    client: 'Governo do Paraná',
-    url: 'https://gestaoescolar.escoladigital.pr.gov.br/',
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'React Query'],
-  },
-  {
-    slug: 'carreira',
-    name: 'Carreira Médica',
-    client: 'PUCPR',
-    url: 'https://carreiramedica.pucpr.br/',
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'React Query'],
-  },
+export const work: Work[] = [
+  { slug: 'carreira', name: 'Carreira Médica', url: 'https://carreiramedica.pucpr.br/', image: '/work/carreira.webp' },
+  { slug: 'aira', name: 'AIRA', url: 'https://github.com/GoogleCloudPlatform/aira', image: '/work/aira.webp' },
+  { slug: 'yield', name: 'Yield', url: 'https://github.com/yagoramires/yield', image: '/work/yield.webp' },
+  { slug: 'pump', name: 'Pump', url: 'https://github.com/yagoramires/pump', image: '/work/pump.webp' },
+  { slug: 'neyhub', name: 'NeyHub', url: 'https://github.com/yagoramires/neyhub', image: '/work/neyhub.webp' },
 ];
 
 export const projects: Project[] = [

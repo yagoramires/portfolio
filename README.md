@@ -1,12 +1,12 @@
 # Portfólio — Yago Ramires
 
-Página única bilíngue (PT/EN) com a experiência, os produtos em produção e os projetos pessoais de Yago Ramires, desenvolvedor frontend.
+Página única bilíngue (PT/EN) com a experiência, os trabalhos e os projetos pessoais de Yago Ramires, desenvolvedor frontend.
 
 **No ar:** https://portfolio-2023-sage.vercel.app
 
 ## Stack
 
-Next 15 (App Router) · React 19 · TypeScript · Tailwind CSS v4. Sem biblioteca de animação, de i18n ou de ícone — animação é CSS nativo e os idiomas são dois dicionários tipados.
+Next 15 (App Router) · React 19 · TypeScript · Tailwind CSS v4. Lenis para a rolagem suave; sem biblioteca de i18n ou de ícone. A animação é CSS nativo e WebGL escrito à mão (campos de pontos), e os idiomas são dois dicionários tipados. Sem placa de vídeo, o retrato vira uma foto estática.
 
 ## Rodando localmente
 
@@ -26,7 +26,7 @@ npm run dev
 
 ## Editando o conteúdo
 
-Todo o texto vive em `src/content/pt.ts` e `src/content/en.ts`, ambos tipados por `Content` em `src/content/types.ts`. Se uma chave faltar em um dos idiomas, o build falha. Os dados de cases e projetos ficam em `src/content/projects.ts`, compartilhados pelos dois idiomas.
+Todo o texto vive em `src/content/pt.ts` e `src/content/en.ts`, ambos tipados por `Content` em `src/content/types.ts`. Se uma chave faltar em um dos idiomas, o build falha. Os dados de trabalhos e projetos ficam em `src/content/projects.ts`, compartilhados pelos dois idiomas.
 
 ## Estrutura
 
@@ -34,4 +34,5 @@ Todo o texto vive em `src/content/pt.ts` e `src/content/en.ts`, ambos tipados po
 src/app/[locale]/    rotas estáticas /pt e /en
 src/components/      uma seção por arquivo
 src/content/         dicionários e dados
+src/lib/             loop de animação, formas em pontos e seções fixas
 ```

@@ -4,7 +4,8 @@ import { Bricolage_Grotesque, Instrument_Sans, Geist_Mono } from 'next/font/goog
 import { notFound } from 'next/navigation';
 import { getContent, isLocale, locales } from '@/content';
 import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
+import { Motion } from '@/components/Motion';
+import { Chrome } from '@/components/Chrome';
 import '../globals.css';
 
 const bricolage = Bricolage_Grotesque({
@@ -65,7 +66,7 @@ export default async function LocaleLayout({
       lang={locale === 'pt' ? 'pt-BR' : 'en'}
       className={`${bricolage.variable} ${instrument.variable} ${geistMono.variable}`}
     >
-      <body className="bg-breu font-sans antialiased">
+      <body className="font-sans antialiased">
         <div className="flex min-h-dvh flex-col">
           <a
             href="#conteudo"
@@ -73,12 +74,34 @@ export default async function LocaleLayout({
           >
             {content.nav.skipToContent}
           </a>
-          <Header nav={content.nav} />
-          <div id="conteudo" tabIndex={-1} className="flex-1">
+          <Header
+            nav={content.nav}
+            role={content.hero.eyebrow}
+            ui={content.ui}
+            links={[
+              { href: '#perfil', label: content.perfil.label },
+              { href: '#trabalhos', label: content.trabalhos.label },
+              { href: '#contato', label: content.contato.label },
+            ]}
+          />
+          <div id="conteudo" tabIndex={-1} className="relative z-[1] flex-1">
             {children}
           </div>
-          <Footer text={content.footer} />
         </div>
+        <Chrome
+          locale={locale}
+          ui={content.ui}
+          contacts={content.contato.links}
+          links={[
+            { href: '#perfil', label: content.perfil.label },
+            { href: '#servicos', label: content.servicos.label },
+            { href: '#trabalhos', label: content.trabalhos.label },
+            { href: '#projetos', label: content.projetos.label },
+            { href: '#experiencia', label: content.experiencia.label },
+            { href: '#contato', label: content.contato.label },
+          ]}
+        />
+        <Motion />
       </body>
     </html>
   );
